@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
 
         spinnerFrom = findViewById(R.id.spinnerFrom);
         spinnerTo = findViewById(R.id.spinnerTo);
-        txtToTranslate = (TextInputEditText) findViewById(R.id.textToTranslate);
-        txtTranslated = (TextInputEditText) findViewById(R.id.translatedText);
+        txtToTranslate = findViewById(R.id.textToTranslate);
+        txtTranslated = findViewById(R.id.translatedText);
         Button btnTranslate = findViewById(R.id.btnTranslate);
         Button btnReset = findViewById(R.id.btnReset);
         Button btnCopy = findViewById(R.id.btnCopy);
