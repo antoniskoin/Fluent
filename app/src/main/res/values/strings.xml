@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Fluent</string>
+    <string name="splash_logo_desc">Fluent logo</string>
+    <string name="about_version">Version: 0.1</string>
+    <string name="translation_box">Version: 0.1</string>
 </resources>
