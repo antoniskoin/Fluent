@@ -18,7 +18,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -109,31 +108,6 @@ public class MainActivity extends AppCompatActivity {
             txtToTranslate.setText("");
             txtTranslated.setText("");
         });
-    }
-
-    private HashMap<String, String> getLanguages() throws IOException {
-        OkHttpClient client = new OkHttpClient();
-            Request request = new Request.Builder()
-                    .url("https://trans.zillyhuhn.com/languages")
-                    .build();
-
-            try (Response response = client.newCall(request).execute()) {
-                HashMap<String, String> languages = new HashMap<>();
-                String jsonData = Objects.requireNonNull(response.body()).string();
-                try {
-                    JSONArray jsonArray = new JSONArray(jsonData);
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        JSONObject jsonObject = new JSONObject(jsonArray.get(i).toString());
-                        String name = (String) jsonObject.get("name");
-                        String code = (String) jsonObject.get("code");
-                        languages.put(name, code);
-                    }
-                    return languages;
-                } catch (JSONException e) {
-                    languages.put("error", e.toString());
-                    return languages;
-                }
-            }
     }
 
     private String post(String url, String query, String source, String target) throws IOException {
