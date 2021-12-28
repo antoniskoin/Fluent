@@ -34,12 +34,14 @@ public class MainActivity extends AppCompatActivity {
 
     private TextInputEditText txtToTranslate, txtTranslated;
     private Spinner spinnerFrom, spinnerTo;
-    private HashMap<String, String> languages;
+    // private HashMap<String, String> languages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent intent = getIntent();
 
         spinnerFrom = findViewById(R.id.spinnerFrom);
         spinnerTo = findViewById(R.id.spinnerTo);
@@ -48,7 +50,18 @@ public class MainActivity extends AppCompatActivity {
         Button btnTranslate = findViewById(R.id.btnTranslate);
         Button btnReset = findViewById(R.id.btnReset);
 
-        Thread langThread = new Thread(() -> {
+        HashMap<String, String> languages = (HashMap<String, String>) intent.getSerializableExtra("LANGUAGES");
+        final List<String> list = new ArrayList<>(languages.keySet());
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1, list);
+        spinnerFrom.setAdapter(adapter);
+        spinnerTo.setAdapter(adapter);
+        int englishPos = adapter.getPosition("English");
+        int germanPos = adapter.getPosition("German");
+        spinnerFrom.setSelection(englishPos);
+        spinnerTo.setSelection(germanPos);
+
+        /*Thread langThread = new Thread(() -> {
             try {
                 languages = getLanguages();
                 final List<String> list = new ArrayList<>(languages.keySet());
@@ -66,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         });
-        langThread.start();
+        langThread.start();*/
 
         btnTranslate.setOnClickListener(view -> {
             hideKeyboard(this);
