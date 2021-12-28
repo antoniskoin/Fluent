@@ -7,6 +7,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
@@ -27,6 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
+import helpers.SpeechLocale;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -37,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextInputEditText txtToTranslate, txtTranslated;
     private Spinner spinnerFrom, spinnerTo;
+    private TextToSpeech textToSpeech;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         Button btnTranslate = findViewById(R.id.btnTranslate);
         Button btnReset = findViewById(R.id.btnReset);
         Button btnCopy = findViewById(R.id.btnCopy);
+        Button btnRead = findViewById(R.id.btnRead);
 
         HashMap<String, String> languages = (HashMap<String, String>) intent.getSerializableExtra("LANGUAGES");
         final List<String> list = new ArrayList<>(languages.keySet());
@@ -68,6 +72,17 @@ public class MainActivity extends AppCompatActivity {
             ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
             ClipData clip = ClipData.newPlainText("Translated Text", txtTranslated.getText());
             clipboard.setPrimaryClip(clip);
+        });
+
+        textToSpeech = new TextToSpeech(getApplicationContext(), i -> {
+            if(i!=TextToSpeech.ERROR){
+                textToSpeech.setLanguage(SpeechLocale.DecideLocale(spinnerTo.getSelectedItem().toString()));
+            }
+        });
+
+        btnRead.setOnClickListener(view -> {
+            String text = Objects.requireNonNull(txtTranslated.getText()).toString();
+            textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH,null, null);
         });
 
         btnTranslate.setOnClickListener(view -> {
