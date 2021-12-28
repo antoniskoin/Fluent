@@ -2,6 +2,9 @@ package com.antonisk.fluent;
 
 import static helpers.Keyboard.hideKeyboard;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -34,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
     private TextInputEditText txtToTranslate, txtTranslated;
     private Spinner spinnerFrom, spinnerTo;
-    // private HashMap<String, String> languages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         txtTranslated = (TextInputEditText) findViewById(R.id.translatedText);
         Button btnTranslate = findViewById(R.id.btnTranslate);
         Button btnReset = findViewById(R.id.btnReset);
+        Button btnCopy = findViewById(R.id.btnCopy);
 
         HashMap<String, String> languages = (HashMap<String, String>) intent.getSerializableExtra("LANGUAGES");
         final List<String> list = new ArrayList<>(languages.keySet());
@@ -61,25 +64,11 @@ public class MainActivity extends AppCompatActivity {
         spinnerFrom.setSelection(englishPos);
         spinnerTo.setSelection(germanPos);
 
-        /*Thread langThread = new Thread(() -> {
-            try {
-                languages = getLanguages();
-                final List<String> list = new ArrayList<>(languages.keySet());
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                        android.R.layout.simple_list_item_1, list);
-                runOnUiThread(() -> spinnerFrom.setAdapter(adapter));
-                runOnUiThread(() -> spinnerTo.setAdapter(adapter));
-                runOnUiThread(() -> {
-                    int englishPos = adapter.getPosition("English");
-                    int germanPos = adapter.getPosition("German");
-                    spinnerFrom.setSelection(englishPos);
-                    spinnerTo.setSelection(germanPos);
-                });
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        btnCopy.setOnClickListener(view -> {
+            ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("Translated Text", txtTranslated.getText());
+            clipboard.setPrimaryClip(clip);
         });
-        langThread.start();*/
 
         btnTranslate.setOnClickListener(view -> {
             hideKeyboard(this);
