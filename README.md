@@ -22,7 +22,7 @@ A simple translation application using LibreTranslate.
 - Turkish
 - Vietnamese
 
-## Screenshot
+## Screenshots
 <img src="https://i.ibb.co/NNWb2fB/Screenshot-20211229-110302-Fluent-1.png" width="270" height="554"><img src="https://i.ibb.co/bJnK7xy/second.png" width="270" height="554">
 
 ## Credits
