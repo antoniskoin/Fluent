@@ -44,7 +44,7 @@ public class SplashActivity extends AppCompatActivity {
     private HashMap<String, String> getLanguages() throws IOException {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
-                .url("https://trans.zillyhuhn.com/languages")
+                .url("https://translate.mentality.rip/languages")
                 .build();
 
         try (Response response = client.newCall(request).execute()) {

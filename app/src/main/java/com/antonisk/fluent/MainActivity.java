@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnTranslate.setOnClickListener(view -> {
             hideKeyboard(this);
-            String url = "https://trans.zillyhuhn.com/translate";
+            String url = "https://translate.mentality.rip/translate";
             String toTranslate = Objects.requireNonNull(txtToTranslate.getText()).toString();
             String source = (String) spinnerFrom.getSelectedItem();
             String target = (String) spinnerTo.getSelectedItem();
