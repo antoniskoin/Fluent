@@ -27,8 +27,9 @@
                 <Spinner
                     android:id="@+id/spinnerFrom"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="48dp"
                     android:spinnerMode="dialog"
+                    android:contentDescription="@string/spinner_from"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -40,14 +41,16 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/spinnerFrom"
-                    app:srcCompat="@drawable/ic_baseline_arrow_forward_24" />
+                    app:srcCompat="@drawable/ic_baseline_arrow_forward_24"
+                    android:contentDescription="@string/arrow_desc" />
 
                 <Spinner
                     android:id="@+id/spinnerTo"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="48dp"
                     android:spinnerMode="dialog"
                     android:textAlignment="textEnd"
+                    android:contentDescription="@string/spinner_to"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -64,6 +67,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toTopOf="@+id/btnTranslate"
                     android:id="@+id/txtToTranslate"
+                    android:hint="@string/textview_input"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
@@ -74,7 +78,6 @@
                         android:layout_height="match_parent"
                         android:id="@+id/textToTranslate"
                         android:inputType="textMultiLine"
-                        android:hint="Text to Translate"
                         android:autofillHints="Insert text..." />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -84,7 +87,7 @@
                     app:layout_constraintBottom_toTopOf="@id/txtTranslated"
                     app:layout_constraintStart_toStartOf="parent"
                     android:id="@+id/btnTranslate"
-                    android:text="Translate"
+                    android:text="@string/button_translate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="?attr/materialButtonOutlinedStyle" />
@@ -93,7 +96,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/btnReset"
-                    android:text="Reset"
+                    android:text="@string/button_reset"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtToTranslate"
                     app:layout_constraintBottom_toTopOf="@+id/txtTranslated"
@@ -105,6 +108,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:id="@+id/txtTranslated"
+                    android:hint="@string/textview_output"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
@@ -114,8 +118,7 @@
                         android:gravity="top|start"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:inputType="textMultiLine"
-                        android:autofillHints="Insert text..." />
+                        android:inputType="textMultiLine" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -130,7 +133,7 @@
                     android:id="@+id/btnRead"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Read"
+                    android:text="@string/button_read"
                     app:icon="@drawable/ic_baseline_volume_up_24"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -141,7 +144,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:icon="@drawable/ic_baseline_content_copy_24"
-                    android:text="Copy"
+                    android:text="@string/button_copy"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon" />

@@ -3,4 +3,13 @@
     <string name="splash_logo_desc">Fluent logo</string>
     <string name="about_version">Version: 0.1</string>
     <string name="translation_box">Version: 0.1</string>
+    <string name="arrow_desc">Translate to</string>
+    <string name="button_translate">Translate</string>
+    <string name="button_reset">Reset</string>
+    <string name="button_read">Read</string>
+    <string name="button_copy">Copy</string>
+    <string name="textview_input">Input</string>
+    <string name="textview_output">Output</string>
+    <string name="spinner_from">Translate from</string>
+    <string name="spinner_to">Translate to</string>
 </resources>
